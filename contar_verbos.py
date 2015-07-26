@@ -13,7 +13,7 @@ except ImportError:
     sys.exit(1)
 
 
-def count_lemmas(filename):
+def count_verbos(filename):
     # Read file
     lines = []
     for line in open(filename).readlines():
@@ -33,10 +33,15 @@ def count_lemmas(filename):
     counter = Counter()
     for word in words:
         lemmas = apiculture.lematiza2(word=word)
-        if lemmas:
-            lema = lemmas['lemas'][0] # TODO: Desambiguation!
-            print(u'%s => %s' % (word, lema['lema']))
-            counter[(lema['lema'], lema['categoria'])] += 1
+        if not lemmas:
+            print(u"No he sabido lematizar %s" % word)
+            continue
+
+        for lemma in lemmas['lemas']:
+            categoria = lemma['categoria']
+            if categoria[0] == 'V':
+                print(u'%s => %s' % (word, lemma['lema']))
+                counter[lemma['lema']] += 1
     return counter
 
 
@@ -51,14 +56,13 @@ if __name__ == '__main__':
         sys.exit()
 
     print(u"\t- Processing file: '%s'" % filename)
-    counter = count_lemmas(filename)
+    counter = count_verbos(filename)
 
     print(u"\n\t\tLEMMA\t\t\tCATEGORY\t\tCOUNT")
     print(u"  \t\t=====\t\t\t========\t\t=====")
     common_words = counter.most_common(100)
-    for (lemma, cat), count in common_words:
-        print(u"\t\t%-15s\t\t%-10s\t\t%s" % (lemma, cat, count))
-
+    for lemma, count in common_words:
+        print(u"\t\t%-15s\t\t%-10s\t\t%s" % (lemma, "V", count))
 
 
 
