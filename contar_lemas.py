@@ -6,7 +6,12 @@ import sys
 from collections import Counter
 
 from apicultur.utils import ApiculturRateLimitSafe
-from secret import ACCESS_TOKEN
+try:
+    from secret import ACCESS_TOKEN
+except ImportError:
+    print(u"No encuentro el archivo 'secret.py' en este directorio con su ACCESS_TOKEN...")
+    sys.exit(1)
+
 
 def count_lemmas(filename):
     # Read file
