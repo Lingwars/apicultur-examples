@@ -3,6 +3,7 @@
 
 import os
 import sys
+from io import open
 from collections import Counter
 
 from apicultur.utils import ApiculturRateLimitSafe
@@ -16,8 +17,8 @@ except ImportError:
 def count_lemmas(filename):
     # Read file
     lines = []
-    for line in open(filename).readlines():
-        lines.append(line.decode("utf-8"))
+    for line in open(filename, encoding='utf-8').readlines():
+        lines.append(line)
     print(u"%d lines" % len(lines))
 
     # Tokenize words
@@ -34,7 +35,7 @@ def count_lemmas(filename):
     for word in words:
         lemmas = apiculture.lematiza2(word=word)
         if lemmas:
-            lema = lemmas['lemas'][0] # TODO: Desambiguation!
+            lema = lemmas['lemas'][0]  # TODO: Desambiguation!
             print(u'%s => %s' % (word, lema['lema']))
             counter[(lema['lema'], lema['categoria'])] += 1
     return counter
