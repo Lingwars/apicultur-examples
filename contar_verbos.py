@@ -3,6 +3,7 @@
 
 import os
 import sys
+from io import open
 from collections import Counter
 
 from apicultur.utils import ApiculturRateLimitSafe
@@ -16,8 +17,8 @@ except ImportError:
 def count_verbos(filename):
     # Read file
     lines = []
-    for line in open(filename).readlines():
-        lines.append(line.decode("utf-8"))
+    for line in open(filename, encoding='utf-8').readlines():
+        lines.append(line)
     print(u"%d lines" % len(lines))
 
     # Tokenize words
