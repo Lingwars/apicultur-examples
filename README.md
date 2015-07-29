@@ -12,8 +12,8 @@ Tienes que tener Python y `pip` instalados
     pip install apicultur
     ```
     
- 2. Descargarte este repositorio (puedes clonarlo con Git o hacer [download](https://github.com/Lingwars/apicultur-examples/archive/master.zip))
- 3. Consigue un `access_token` en Apicultur
+ 2. Descargarte este repositorio (puedes clonarlo con Git o hacer [download](https://github.com/Lingwars/apicultur-examples/archive/master.zip)), o puedes copiar el ejemplo que más te guste de los de arriba.
+ 3. Consigue un `access_token` en [Apicultur](https://store.apicultur.com)
  4. Crea un archivo `secret.py` con el siguiente contenido:
 
     ```python
