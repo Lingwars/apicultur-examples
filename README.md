@@ -1,7 +1,6 @@
 # apicultur-examples
 Ejemplos utilizando la API de Apicultur
 
-
 ## Requisitos
 Tienes que tener Python y `pip` instalados
 
@@ -27,3 +26,4 @@ Tienes que tener Python y `pip` instalados
     ```
 
 ¿Has creado algún ejemplo interesante que quieres compartir? ¡Mándanos un pull-request!
+
